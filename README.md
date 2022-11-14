@@ -1,5 +1,10 @@
 # Algorithms and Programming II final assignment
 
+**TODO**
+- [ ] Translate assignment description
+- [ ] Translate application text from pt/br to en/us
+- [ ] Add solution description (maybe)
+
 # How to run
 **Dependencies**
 - g++
