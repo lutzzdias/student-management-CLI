@@ -3,77 +3,83 @@
 
 #include "func.h"
 
-void lerArquivo(tAluno *alunos, int &n){
-    FILE *arq;
+void readFile(tStudent *students, int &n) {
+  FILE *file;
 
-    arq = fopen("entrada.txt", "r");
+  file = fopen("entrada.txt", "r");
 
-    for(int i = n; feof(arq) == 0; i++, n++){
-        char stringNaoTratada[50];
-        fscanf(arq, "%50[^0123456789] %llu %lf %lf %lf %lf ", stringNaoTratada, &alunos[i].rga, &alunos[i].p1, &alunos[i].p2, &alunos[i].trab, &alunos[i].po);
+  for (int i = n; feof(file) == 0; i++, n++) {
+    char rawString[51];
+    fscanf(file, "%50[^0123456789] %llu %lf %lf %lf %lf ", rawString,
+           &students[i].rga, &students[i].p1, &students[i].p2,
+           &students[i].trab, &students[i].po);
 
-        stringNaoTratada[strlen(stringNaoTratada) - 1] = '\0';
-        strcpy(alunos[i].nome, stringNaoTratada);
+    rawString[strlen(rawString) - 1] = '\0';
+    strcpy(students[i].nome, rawString);
 
-        calcularNota(alunos[i]);
-    }
+    calculateGrade(students[i]);
+  }
 
-    printf("Número de alunos: %d\n", n);
-    fclose(arq);
+  printf("Número de alunos: %d\n", n);
+  fclose(file);
 }
 
-void gerarAprovados(tAluno *alunos, int n){
+void generateApproved(tStudent *students, int n) {
 
-    ordenarAlunos(alunos, n);
+  orderStudents(students, n);
 
-    FILE *arq;
-    int cont=0;
+  FILE *file;
+  int count = 0;
 
-    arq = fopen("aprovados.txt", "w");
+  file = fopen("aprovados.txt", "w");
 
-    for(int i = 0; i < n; i++){
-        if (alunos[i].mf >= 6){
-            fprintf(arq, "%-50s%-15llu%-5.1f\n", alunos[i].nome, alunos[i].rga, alunos[i].mf);
-            cont++;
-        }
+  for (int i = 0; i < n; i++) {
+    if (students[i].mf >= 6) {
+      fprintf(file, "%-50s%-15llu%-5.1f\n", students[i].nome, students[i].rga,
+              students[i].mf);
+      count++;
     }
+  }
 
-    fprintf(arq, "Total: %d", cont);
-    fclose(arq);
+  fprintf(file, "Total: %d", count);
+  fclose(file);
 }
 
-void gerarReprovados(tAluno *alunos, int n){
+void generateNotApproved(tStudent *students, int n) {
 
-    ordenarAlunos(alunos, n);
+  orderStudents(students, n);
 
-    FILE *arq;
-    int cont=0;
+  FILE *file;
+  int count = 0;
 
-    arq = fopen("reprovados.txt", "w");
+  file = fopen("reprovados.txt", "w");
 
-    for(int i = 0; i < n; i++){
-        if (alunos[i].mf < 6){
-            fprintf(arq, "%-50s%-15llu%-5.1f\n", alunos[i].nome, alunos[i].rga, alunos[i].mf);
-            cont++;
-        }
+  for (int i = 0; i < n; i++) {
+    if (students[i].mf < 6) {
+      fprintf(file, "%-50s%-15llu%-5.1f\n", students[i].nome, students[i].rga,
+              students[i].mf);
+      count++;
     }
+  }
 
-    fprintf(arq, "Total: %d", cont);
-    fclose(arq);
+  fprintf(file, "Total: %d", count);
+  fclose(file);
 }
 
-void sair(tAluno *alunos, int n){
+void exit(tStudent *students, int n) {
 
-    ordenarAlunos(alunos, n);
+  orderStudents(students, n);
 
-    FILE *arq;
-    int cont=0;
+  FILE *file;
+  int count = 0;
 
-    arq = fopen("atual.txt", "w");
+  file = fopen("atual.txt", "w");
 
-    for(int i = 0; i < n; i++){
-        fprintf(arq, "%s %llu %.1f %.1f %.1f %.1f\n", alunos[i].nome, alunos[i].rga, alunos[i].p1, alunos[i].p2, alunos[i].trab, alunos[i].po);
-    }
+  for (int i = 0; i < n; i++) {
+    fprintf(file, "%s %llu %.1f %.1f %.1f %.1f\n", students[i].nome,
+            students[i].rga, students[i].p1, students[i].p2, students[i].trab,
+            students[i].po);
+  }
 
-    fclose(arq);
+  fclose(file);
 }

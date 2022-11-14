@@ -1,24 +1,24 @@
 #include <stdio.h>
 
-struct tAluno {
-    char nome[50];
-    unsigned long long int rga;
-    double p1, p2, trab, po, mf;
-    char situacao[10];
+struct tStudent {
+  char nome[50];
+  unsigned long long int rga;
+  double p1, p2, trab, po, mf;
+  char situacao[10];
 };
 
-void ordenarAlunos(tAluno *alunos, int n);
+void orderStudents(tStudent *students, int n);
 
-void calcularNota(tAluno &aluno);
+void calculateGrade(tStudent &students);
 
-void cadastrarAluno(tAluno *vetor, int i);
+void registerStudent(tStudent *students, int i);
 
-void buscarAluno(tAluno *alunos, int n);
+void searchStudent(tStudent *students, int n);
 
-void lerArquivo(tAluno *alunos, int &n);
+void readFile(tStudent *students, int &n);
 
-void gerarAprovados(tAluno *alunos, int n);
+void generateApproved(tStudent *students, int n);
 
-void gerarReprovados(tAluno *alunos, int n);
+void generateNotApproved(tStudent *students, int n);
 
-void sair(tAluno *alunos, int n);
+void exit(tStudent *students, int n);
