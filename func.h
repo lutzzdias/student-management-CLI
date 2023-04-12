@@ -1,9 +1,10 @@
 #include <stdio.h>
 
-struct tStudent {
-  char nome[50];
+struct tStudent
+{
+  char name[50];
   unsigned long long int rga;
-  double p1, p2, trab, po, mf;
+  double test1, test2, assignment, optionalTest, finalGrade;
   char situacao[10];
 };
 
