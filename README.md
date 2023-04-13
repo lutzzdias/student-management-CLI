@@ -2,9 +2,9 @@
 
 **TODO**
 
-- [ ] Translate assignment description
+- [x] Translate assignment description
 - [x] Translate application text from pt/br to en/us
-- [ ] Add solution description (maybe)
+- [ ] Improve README with instructions and solution description
 
 # How to run
 
