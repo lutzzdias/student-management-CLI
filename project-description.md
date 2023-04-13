@@ -13,7 +13,7 @@ from a given subject. Each student has the following info:
 
 All grades must be represented using floating point numbers (use the double type). The final grade is calculated according to the following formula:
 
-$$ FG = 0.35 _ test1 + 0.35 _ test2 + 0.3 \* assignment $$
+$$ FG = 0.35 \* test1 + 0.35 \* test2 + 0.3 \* assignment $$
 
 Do not forget the the grade of the optional test may replace the lowest grade of the other tests (test1 or test2), if it’s bigger than the test’s grade. The studend whose final grade is bigger or equal to 6.0 will have passed, otherwise, will have failed.
 
@@ -22,10 +22,15 @@ During the execution of the program, an ordered array of structs must be used (t
 Your application must show a menu with the following options:
 
 1. **Register student**: inserts a new student in the list with the data given as input by the user. The user must provide data for all the fields of a student (if the optional test wasn’t taken, then the user must provide a 0).
+
 2. **Search student**: asks for the user a string and lists the names, final grade and situation (passed or failed) of all students whose names match (completely or partially) with the given string. The list must show, in the end, the number of results found.
+
 3. **Read file with students list**: asks for the user the name of a text file containing the students’ data. this file will contain the data of, at max, one student per line and, in each line, _all the data_ of the student must be given in the same order described in the student struct description. If the student did not take the optional test, the file must have the grade 0 in the appropriate place. At the end of reading the file, the user must be informed how many students were registered. _See section 3 for more information about the file formatting._
+
 4. **Generate file with approved students’ data, alphabetically ordered**: writes a text file containing the names, RGAs and final grades of the students that passed, one student per line. The students within the generated file must be in alphabetical order (Obs. in case there are 2 or more students with the same name, deal with the "tie" by placing the student with the lowest RGA before the others). At the end of the file, there must be a line with the number of students that passed. The name of the file must be _passed.txt_. _See section 4 for more information about the file formatting._
+
 5. **Generate file with failed students’ data**: writes a text file containing the names and final grade of the students that failed, one student per line. The students within the generated file must be in alphabetical order (Obs. in case there are 2 or more students with the same name, deal with the "tie" by placing the student with the lowest RGA before the others). At the end of the file, there must be a line with the number of students that failed. The name of the file must be _failed.txt_. _See section 4 for more information about the file formatting._
+
 6. **Exit**: Closes the program. Before closing, save all data of the studens in a file called _actual.txt_, storing one student per line, with the data fields separated by space and in the order they were presented in section 1.
 
 The sorting algorithm to be used must be one of the following:
